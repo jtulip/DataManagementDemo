@@ -1,4 +1,3 @@
 
-
-
-public class RecordList extends java.util.ArrayList<IRecord> {}
+public class RecordList extends java.util.ArrayList<IRecord> {
+}

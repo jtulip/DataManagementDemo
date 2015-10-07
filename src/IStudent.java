@@ -1,19 +1,20 @@
 
-
-
 public interface IStudent {
 
-    public Integer getID();
+	public Integer getID();
 
-    public String getFirstName();
-    public void setFirstName(String firstName);
+	public String getFirstName();
 
-    public String getLastName();
-    public void setLastName(String lastName);
+	public void setFirstName(String firstName);
 
-    public void addUnitRecord( IRecord record );
-    public IRecord getUnitRecord( String unitCode );
+	public String getLastName();
 
-    public RecordList getUnitRecords();
+	public void setLastName(String lastName);
+
+	public void addRecord(IRecord record);
+
+	public IRecord getRecordForUnit(String unitCode);
+
+	public RecordList getUnitRecords();
 
 }

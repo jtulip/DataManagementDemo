@@ -345,9 +345,9 @@ public class CheckGradeUserInterface extends javax.swing.JFrame implements IUnit
 	
 	
 	public void setRecord(IRecord record) {
-		asg1MarkTextField.setText(new Float(record.getAsg1()).toString());
-		asg2MarkTextField.setText(new Float(record.getAsg2()).toString());
-		examMarkTextField.setText(new Float(record.getExam()).toString());
+		asg1MarkTextField.setText(new Float(record.getAsg1Mark()).toString());
+		asg2MarkTextField.setText(new Float(record.getAsg2Mark()).toString());
+		examMarkTextField.setText(new Float(record.getExamMark()).toString());
 		gradeLabel.setText("");
 		// setEnableChangeMarks(true);
 	}

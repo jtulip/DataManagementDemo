@@ -1,30 +1,35 @@
 
-
-
 public interface IUnit {
 
-    public String getUnitCode();
-    public String getUnitName();
+	public String getUnitCode();
 
-    public float getPsCutoff();
-    public void  setPsCutoff1(float cutoff);
+	public String getUnitName();
 
-    public float getCrCutoff();
-    public void  setCrCutoff(float cutoff);
+	public float getPsCutoff();
 
-    public float getDiCuttoff();    
-    public void  setDiCutoff(float cutoff);
+	public void setPsCutoff1(float cutoff);
 
-    public float getHdCutoff();
-    public void  setHdCutoff(float cutoff);    
+	public float getCrCutoff();
 
-    public float getAeCutoff();    
-    public void  setAeCutoff(float cutoff);
+	public void setCrCutoff(float cutoff);
 
-    public String getGrade(float asg1, float asg2, float exam);
+	public float getDiCutoff();
 
-    public void               addStudentRecord(IRecord record );
-    public IRecord getStudentRecord(int studentID );
-    
-    public RecordList listStudentRecords();
+	public void setDiCutoff(float cutoff);
+
+	public float getHdCutoff();
+
+	public void setHdCutoff(float cutoff);
+
+	public float getAeCutoff();
+
+	public void setAeCutoff(float cutoff);
+
+	public String getGrade(float asg1Mark, float asg2Mark, float examMark);
+
+	public void addStudentRecord(IRecord record);
+
+	public IRecord getStudentRecord(int studentId);
+
+	public RecordList listStudentRecords();
 }

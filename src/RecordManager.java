@@ -57,7 +57,7 @@ public class RecordManager {
 				
 				IRecord record = new Record(studentId, unitCode, asg1Mark, asg2Mark, examMark);
 				
-				String recordKey = record.getStudentID().toString() + record.getUnitCode();
+				String recordKey = record.getStudentId().toString() + record.getUnitCode();
 				recordMap_.put(recordKey, record);
 				return record;
 			}
@@ -123,16 +123,16 @@ public class RecordManager {
 		List<Element> elementList = getElementList("studentUnitRecordTable", "record");
 		
 		for (Element element : elementList) {
-			Integer studentId = Integer.valueOf(record.getStudentID());
+			Integer studentId = Integer.valueOf(record.getStudentId());
 			String unitCode = record.getUnitCode();
 			
 			boolean recordMatches = studentId.toString().equals(element.getAttributeValue("sid")) && 
 									unitCode.equals(element.getAttributeValue("uid"));
 			
 			if (recordMatches) {
-				Float asg1Value = Float.valueOf(record.getAsg1());
-				Float asg2Value = Float.valueOf(record.getAsg2());
-				Float examValue = Float.valueOf(record.getExam());
+				Float asg1Value = Float.valueOf(record.getAsg1Mark());
+				Float asg2Value = Float.valueOf(record.getAsg2Mark());
+				Float examValue = Float.valueOf(record.getExamMark());
 				
 				element.setAttribute("asg1", asg1Value.toString());
 				element.setAttribute("asg2", asg2Value.toString());

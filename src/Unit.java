@@ -1,69 +1,149 @@
-        
-
 
 public class Unit implements IUnit {
-private String uc;private String UN;
-        private float co2;private float co1;private float co4;private float co3;private float co5;
-    private RecordList rs;
-public Unit( String UC, String un, float f1, float f2, float f3, float f4, float f5, RecordList rl ) {
+	
+	private String unitCode_;
+	private String unitName_;
+	private float psCutoff_;
+	private float crCutoff_;
+	private float diCutoff_;
+	private float hdCutoff_;
+	private float aeCutoff_;
+	private RecordList records_;
 
-    uc = UC;UN = un;co2 = f1;co1 = f2;
-this.co4 = f3;
-co3 = f4;
-this.co5 = f5;
-rs = rl == null ? new RecordList() : rl; }
-public String getUnitCode() { return this.uc; }
-public String getUnitName() { 
+	
+	
+	public Unit(String unitCode, String unitName, 
+			    float psCutoff, float crCutoff, float diCutoff, float hdCutoff, float aeCutoff, RecordList rl) {
+		
+		unitCode_ = unitCode;
+		unitName_ = unitName;
+		psCutoff_ = psCutoff;
+		crCutoff_ = crCutoff;
+		diCutoff_ = diCutoff;
+		hdCutoff_ = hdCutoff;
+		aeCutoff_ = aeCutoff;
+		records_ = rl == null ? new RecordList() : rl;
+	}
 
-    return this.UN; }
-public void setPsCutoff1( float cutoff) { this.co2 = cutoff; 
-}
-public float getPsCutoff(){ return this.co2; }
-        public void setCrCutoff( float cutoff) { 
-    this.co1 = cutoff;}
-public float getCrCutoff(){ 
-return this.co1; 
-}
-public void setDiCutoff( float cutoff) 
-            { this.co4 = cutoff; }
-public float getDiCuttoff(){ return this.co4; }
-        public void HDCutoff( float cutoff) { this.co3 = cutoff; }
-    public void setHdCutoff( float cutoff) {this.co3 = cutoff; }
-public float getHdCutoff(){ return this.co3; 
+	
+	
+	public String getUnitCode() {
+		return this.unitCode_;
+	}
+
+	
+	
+	public String getUnitName() {
+
+		return this.unitName_;
+	}
+
+	
+	
+	public void setPsCutoff1(float cutoff) {
+		this.psCutoff_ = cutoff;
+	}
+
+	
+	
+	public float getPsCutoff() {
+		return this.psCutoff_;
+	}
+
+	
+	
+	public void setCrCutoff(float cutoff) {
+		this.crCutoff_ = cutoff;
+	}
+
+	
+	
+	public float getCrCutoff() {
+		return this.crCutoff_;
+	}
+
+	
+	
+	public void setDiCutoff(float cutoff) {
+		this.diCutoff_ = cutoff;
+	}
+
+	
+	
+	public float getDiCutoff() {
+		return this.diCutoff_;
+	}
+
+	
+	
+	public void setHdCutoff(float cutoff) {
+		this.hdCutoff_ = cutoff;
+	}
+
+	
+	
+	public float getHdCutoff() {
+		return this.hdCutoff_;
+
+	}
+
+	
+	
+	public void setAeCutoff(float cutoff) {
+		this.aeCutoff_ = cutoff;
+	}
+
+	
+	
+	public float getAeCutoff() {
+		return this.aeCutoff_;
+	}
+
+	
+	
+	public String getGrade(float asg1Mark, float asg2Mark, float examMark) {
+		float totalMark = asg1Mark + asg2Mark + examMark;
+
+		if (totalMark < aeCutoff_) {
+			return "FL";
+		} 
+		else if (totalMark < psCutoff_) {
+			return "AE";
+		}
+		else if (totalMark < crCutoff_) {
+			return "PS";
+		}
+		else if (totalMark < diCutoff_) {
+			return "CR";
+		}
+		else if (totalMark < hdCutoff_) {
+			return "DI";
+		}
+		else {
+			return "HD";
+		}
+	}
+
+	
+	
+	public void addStudentRecord(IRecord record) {
+		records_.add(record);
+	}
 
 
-}
-public void setAeCutoff( float cutoff) { this.co5 = cutoff;}
-public float getAeCutoff(){ return this.co5; 
-}
-public String getGrade( float f1, float f2, float f3){         
-float t = f1 + f2 + f3;
+	
+	public IRecord getStudentRecord(int studentId) {
+		for (IRecord record : records_) {
+			if (record.getStudentId() == studentId) {
+				return record;
+			}
+		}
+		return null;
+	}
 
-if ( t < co5 ) {
-    return "FL";
-}
-else 
-    if ( t < co2 ) 
-        return "AE";
-      else 
-if ( t < co1 ) 
-            return "PS";
-      else 
-         if ( t < co4 ) 
-return "CR";
-   else if ( t < co3 ) 
-            return "DI";
-else 
-return "HD";}
-
-    public void addStudentRecord( IRecord record ) { rs.add(record); }
-public IRecord getStudentRecord( int studentID ) {
-for ( IRecord r : rs ) {
-if (r.getStudentID() == studentID) 
-return r;
-}
-return null;
-}
-public RecordList listStudentRecords() { return rs; 
-}
+	
+	
+	public RecordList listStudentRecords() {
+		return records_;
+	}
 }

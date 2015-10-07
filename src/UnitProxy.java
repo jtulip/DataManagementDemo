@@ -29,7 +29,7 @@ return um.getUnit(UC).getCrCutoff();
     }
 
 public void setDiCutoff(float cutoff) {um.getUnit(UC).setDiCutoff(cutoff);}
-    public float getDiCuttoff() {return um.getUnit(UC).getDiCuttoff();}
+    public float getDiCutoff() {return um.getUnit(UC).getDiCutoff();}
 public void setHdCutoff(float cutoff) {
     um.getUnit(UC).setHdCutoff(cutoff);}
     public float getHdCutoff() {

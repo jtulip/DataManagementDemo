@@ -6,17 +6,18 @@ import java.util.HashMap;
 import java.util.List;
 
 public class StudentManager {
-	private static StudentManager self = null;
+	
+	private static StudentManager self_ = null;
 	private StudentMap studentMap_;
 	private Map<String, StudentMap> unitMap_;
 
 	
 	
 	public static StudentManager getInstance() {
-		if (self == null) {
-			self = new StudentManager();
+		if (self_ == null) {
+			self_ = new StudentManager();
 		}
-		return self;
+		return self_;
 	}
 
 	
@@ -41,6 +42,7 @@ public class StudentManager {
 	private IStudent createStudent(Integer id) {
 		IStudent student;
 		Element studentElement = getStudentElement(id);
+		
 		if (studentElement != null) {
 			RecordList records = RecordManager.getInstance().getRecordsByStudent(id);
 			String firstName = studentElement.getAttributeValue("fname");
@@ -81,7 +83,7 @@ public class StudentManager {
 		RecordList unitRecords = RecordManager.getInstance().getRecordsByUnit(unitCode);
 		
 		for (IRecord S : unitRecords) {
-			student = createStudentProxy(new Integer(S.getStudentID()));
+			student = createStudentProxy(new Integer(S.getStudentId()));
 			Integer studentId = student.getID();
 			studentMap.put(studentId, student);
 		}
@@ -93,10 +95,10 @@ public class StudentManager {
 	
 	private Element getStudentElement(Integer id) {
 		Document doc = XMLManager.getInstance().getDocument();
-		Element studentTableElement = doc.getRootElement().getChild("studentTable");
-		
+		Element studentTableElement = doc.getRootElement().getChild("studentTable");		
 		@SuppressWarnings("unchecked")
 		List<Element> studentElements = (List<Element>) studentTableElement.getChildren("student");
+		
 		for (Element el : studentElements) {
 			if (id.toString().equals(el.getAttributeValue("sid"))) {
 				return el;

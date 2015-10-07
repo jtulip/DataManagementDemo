@@ -58,7 +58,7 @@ public class CheckGradeController {
 		else {
 			IStudent student = StudentManager.getInstance().getStudent(studentId);
 
-			IRecord record = student.getUnitRecord(currentUnitCode_);
+			IRecord record = student.getRecordForUnit(currentUnitCode_);
 
 			checkGradeUI_.setRecord(record);
 			checkGradeUI_.setCheckButtonEnabled(true);
@@ -88,7 +88,7 @@ public class CheckGradeController {
 	public void saveGrade(float asg1Mark, float asg2Mark, float examMark) {
 		IStudent student = StudentManager.getInstance().getStudent(currentStudentID_);
 
-		IRecord record = student.getUnitRecord(currentUnitCode_);
+		IRecord record = student.getRecordForUnit(currentUnitCode_);
 		record.setAsg1Mark(asg1Mark);
 		record.setAsg2Mark(asg2Mark);
 		record.setExamMark(examMark);

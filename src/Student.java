@@ -33,11 +33,11 @@ public class Student implements IStudent {
 		this.ln = lastName;
 	}
 
-	public void addUnitRecord(IRecord record) {
+	public void addRecord(IRecord record) {
 		su.add(record);
 	}
 
-	public IRecord getUnitRecord(String unitCode) {
+	public IRecord getRecordForUnit(String unitCode) {
 		for (IRecord r : su)
 			if (r.getUnitCode().equals(unitCode))
 				return r;

@@ -1,48 +1,70 @@
 
 public class RecordProxy implements IRecord {
-	private Integer studentID;
-	private String unitCode;
-	private RecordManager mngr;
+	
+	private Integer studentId_;
+	private String unitCode_;
+	private RecordManager recordManager_;
 
+	
+	
 	public RecordProxy(Integer id, String code) {
-		this.studentID = id;
-		this.unitCode = code;
-		this.mngr = RecordManager.getInstance();
+		this.studentId_ = id;
+		this.unitCode_ = code;
+		this.recordManager_ = RecordManager.getInstance();
 	}
 
-	public Integer getStudentID() {
-		return studentID;
+	
+	
+	public Integer getStudentId() {
+		return studentId_;
 	}
 
+
+	
 	public String getUnitCode() {
-		return unitCode;
+		return unitCode_;
 	}
 
+	
+	
 	public void setAsg1Mark(float mark) {
-		mngr.getStudentUnitRecord(studentID, unitCode).setAsg1Mark(mark);
+		recordManager_.getStudentUnitRecord(studentId_, unitCode_).setAsg1Mark(mark);
 	}
 
-	public float getAsg1() {
-		return mngr.getStudentUnitRecord(studentID, unitCode).getAsg1();
+	
+	
+	public float getAsg1Mark() {
+		return recordManager_.getStudentUnitRecord(studentId_, unitCode_).getAsg1Mark();
 	}
 
+	
+	
 	public void setAsg2Mark(float mark) {
-		mngr.getStudentUnitRecord(studentID, unitCode).setAsg2Mark(mark);
+		recordManager_.getStudentUnitRecord(studentId_, unitCode_).setAsg2Mark(mark);
 	}
 
-	public float getAsg2() {
-		return mngr.getStudentUnitRecord(studentID, unitCode).getAsg2();
+	
+	
+	public float getAsg2Mark() {
+		return recordManager_.getStudentUnitRecord(studentId_, unitCode_).getAsg2Mark();
 	}
 
+	
+	
 	public void setExamMark(float mark) {
-		mngr.getStudentUnitRecord(studentID, unitCode).setExamMark(mark);
+		recordManager_.getStudentUnitRecord(studentId_, unitCode_).setExamMark(mark);
 	}
 
-	public float getExam() {
-		return mngr.getStudentUnitRecord(studentID, unitCode).getExam();
+	
+	
+	public float getExamMark() {
+		return recordManager_.getStudentUnitRecord(studentId_, unitCode_).getExamMark();
 	}
 
-	public float getTotal() {
-		return mngr.getStudentUnitRecord(studentID, unitCode).getTotal();
+	
+	
+	public float getTotalMark() {
+		return recordManager_.getStudentUnitRecord(studentId_, unitCode_).getTotalMark();
 	}
+	
 }

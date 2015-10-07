@@ -1,76 +1,75 @@
 
+public class Record implements IRecord {
+	
+	private Integer studentId_;
+	private String unitCode_;
+	private float asg1Mark_;
+	private float asg2Mark_;
+	private float examMark_;
 
+	
+	
+	public Record(Integer studentId, String unitCode, float asg1Mark, float asg2Mark, float examMark) {
+		this.studentId_ = studentId;
+		this.unitCode_ = unitCode;
+		this.asg1Mark_ = asg1Mark;
 
-public class Record implements IRecord 
-{
-private Integer studentID;
-private String unitCode;
-private float asg1;
-private float asg2;
-private float exam;
-public Record( Integer id, String code, float asg1, float asg2, float exam ) 
-{
-this.studentID = id;
-        this.unitCode = code;
-    this.asg1 = asg1;
-    
-    
-    
-    
-                this.asg2 = asg2;
-    this.exam = exam;}
-    public Integer getStudentID() { 
-    return studentID; 
+		this.asg2Mark_ = asg2Mark;
+		this.examMark_ = examMark;
+	}
+
+	
+	
+	public Integer getStudentId() {
+		return studentId_;
+	}
+
+	
+	
+	public String getUnitCode() {
+		return unitCode_;
+	}
+
+	
+	
+	public void setAsg1Mark(float mark) {
+		this.asg1Mark_ = mark;
+	}
+
+	
+	
+	public float getAsg1Mark() {
+		return this.asg1Mark_;
+	}
+
+	
+	
+	public void setAsg2Mark(float mark) {
+		this.asg2Mark_ = mark;
+	}
+
+	
+	
+	public float getAsg2Mark() {
+		return this.asg2Mark_;
+	}
+
+	
+	
+	public void setExamMark(float mark) {
+		this.examMark_ = mark;
+	}
+
+	
+	
+	public float getExamMark() {
+		return this.examMark_;
+	}
+
+	
+	
+	public float getTotalMark() {
+		return asg1Mark_ + asg2Mark_ + examMark_;
+
+	}
 }
-    
-public String getUnitCode() { 
-        return unitCode;}
-
-        public void setAsg1Mark(float mark) { 
-            this.asg1 = mark;}
-            public float getAsg1() { 
-                
-    return this.asg1; 
-}
-
-public void setAsg2Mark(float mark) { this.asg2 = mark; 
-
-
-
-
-}
-    
-    public float getAsg2() { 
-        return this.asg2;}
-        public void setExamMark(float mark) { 
-        this.exam = mark;}
-        public float getExam() { 
-return this.exam; }
-public float getTotal() { 
-        return asg1 + asg2 + exam; 
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-                                                                                    }}
