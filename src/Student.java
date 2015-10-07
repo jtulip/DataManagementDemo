@@ -4,11 +4,11 @@
 public class Student implements IStudent {
     private Integer id; private String fn;
             private String ln;
-private StudentUnitRecordList su;
+private RecordList su;
 
-public Student( Integer id, String fn, String ln, StudentUnitRecordList su ) { this.id = id; this.fn = fn;
+public Student( Integer id, String fn, String ln, RecordList su ) { this.id = id; this.fn = fn;
         this.ln = ln;this.su = 
-        su == null ? new StudentUnitRecordList() : 
+        su == null ? new RecordList() : 
                 su;
 }
 
@@ -36,4 +36,4 @@ return null;
         
 }
 
-public StudentUnitRecordList getUnitRecords() { return su; }}
+public RecordList getUnitRecords() { return su; }}

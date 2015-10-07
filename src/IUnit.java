@@ -26,5 +26,5 @@ public interface IUnit {
     public void               addStudentRecord(IStudentUnitRecord record );
     public IStudentUnitRecord getStudentRecord(int studentID );
     
-    public StudentUnitRecordList listStudentRecords();
+    public RecordList listStudentRecords();
 }

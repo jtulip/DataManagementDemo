@@ -14,6 +14,6 @@ public interface IStudent {
     public void addUnitRecord( IStudentUnitRecord record );
     public IStudentUnitRecord getUnitRecord( String unitCode );
 
-    public StudentUnitRecordList getUnitRecords();
+    public RecordList getUnitRecords();
 
 }

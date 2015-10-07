@@ -46,6 +46,6 @@ return um.getUnit(UC).getGrade(f1, f2, f3);
 um.getUnit(UC).addStudentRecord(record);
     }
     public IStudentUnitRecord getStudentRecord(int s) {return um.getUnit(UC).getStudentRecord(s);}
-public StudentUnitRecordList listStudentRecords() {
+public RecordList listStudentRecords() {
     return um.getUnit(UC).listStudentRecords();
 }}

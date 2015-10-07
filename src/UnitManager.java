@@ -33,10 +33,10 @@ IUnit iu;
 
         for ( Element el : (List<Element>) XMLManager.getXML().getDocument().getRootElement().getChild("unitTable").getChildren("unit") ) 
             if ( unitCode.equals(el.getAttributeValue("uid"))) {
-                StudentUnitRecordList slist; 
+                RecordList slist; 
                 
        slist = null;
-       iu = new Unit( el.getAttributeValue("uid"),el.getAttributeValue("name"),Float.valueOf(el.getAttributeValue("ps")).floatValue(),Float.valueOf(el.getAttributeValue("cr")).floatValue(),Float.valueOf(el.getAttributeValue("di")).floatValue(),Float.valueOf(el.getAttributeValue("hd")).floatValue(),Float.valueOf(el.getAttributeValue("ae")).floatValue(),StudentUnitRecordManager.instance().getRecordsByUnit(unitCode) );
+       iu = new Unit( el.getAttributeValue("uid"),el.getAttributeValue("name"),Float.valueOf(el.getAttributeValue("ps")).floatValue(),Float.valueOf(el.getAttributeValue("cr")).floatValue(),Float.valueOf(el.getAttributeValue("di")).floatValue(),Float.valueOf(el.getAttributeValue("hd")).floatValue(),Float.valueOf(el.getAttributeValue("ae")).floatValue(),RecordManager.instance().getRecordsByUnit(unitCode) );
                 UM.put(iu.getUnitCode(), iu);
 return iu;}
         

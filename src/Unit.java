@@ -4,14 +4,14 @@
 public class Unit implements IUnit {
 private String uc;private String UN;
         private float co2;private float co1;private float co4;private float co3;private float co5;
-    private StudentUnitRecordList rs;
-public Unit( String UC, String un, float f1, float f2, float f3, float f4, float f5, StudentUnitRecordList rl ) {
+    private RecordList rs;
+public Unit( String UC, String un, float f1, float f2, float f3, float f4, float f5, RecordList rl ) {
 
     uc = UC;UN = un;co2 = f1;co1 = f2;
 this.co4 = f3;
 co3 = f4;
 this.co5 = f5;
-rs = rl == null ? new StudentUnitRecordList() : rl; }
+rs = rl == null ? new RecordList() : rl; }
 public String getUnitCode() { return this.uc; }
 public String getUnitName() { 
 
@@ -64,6 +64,6 @@ return r;
 }
 return null;
 }
-public StudentUnitRecordList listStudentRecords() { return rs; 
+public RecordList listStudentRecords() { return rs; 
 }
 }

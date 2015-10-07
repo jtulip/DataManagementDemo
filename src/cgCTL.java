@@ -93,7 +93,7 @@ public void enableChangeMarks() {
 r.setAsg1(asg1);
                     r.setAsg2(asg2);
 r.setExam(exam);
-            StudentUnitRecordManager.instance().saveRecord(r);
+            RecordManager.instance().saveRecord(r);
 cgUI.setState4(true);
 
 
