@@ -1,15 +1,15 @@
 
 
 
-public class cgUI extends javax.swing.JFrame implements IUnitLister, IStudentLister {
-private cgCTL ctl;
+public class CheckGradeUserInterface extends javax.swing.JFrame implements IUnitLister, IStudentLister {
+private CheckGradeController ctl;
 private javax.swing.DefaultComboBoxModel uM;
 private javax.swing.DefaultComboBoxModel rM;
 float f1;
 float f2;
 float f3;
 Integer sid;
-public cgUI( cgCTL ctl ) 
+public CheckGradeUserInterface( CheckGradeController ctl ) 
 {
 this.ctl = ctl;
 uM = new javax.swing.DefaultComboBoxModel( new String[0] );

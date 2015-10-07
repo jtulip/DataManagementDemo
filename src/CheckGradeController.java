@@ -1,17 +1,17 @@
 
 
 
-public class cgCTL {
+public class CheckGradeController {
 
-cgUI cgUI;
+CheckGradeUserInterface cgUI;
     String cuc = null;
 Integer currentStudentID = null;
-    public cgCTL() {}
+    public CheckGradeController() {}
 
     
     
     public void execute() {
-cgUI = new cgUI( this );
+cgUI = new CheckGradeUserInterface( this );
         cgUI.setState1(false);
         
         
