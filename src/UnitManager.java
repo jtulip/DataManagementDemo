@@ -31,12 +31,12 @@ IUnit iu;
 
 
 
-        for ( Element el : (List<Element>) XMLManager.getXML().getDocument().getRootElement().getChild("unitTable").getChildren("unit") ) 
+        for ( Element el : (List<Element>) XMLManager.getInstance().getDocument().getRootElement().getChild("unitTable").getChildren("unit") ) 
             if ( unitCode.equals(el.getAttributeValue("uid"))) {
                 RecordList slist; 
                 
        slist = null;
-       iu = new Unit( el.getAttributeValue("uid"),el.getAttributeValue("name"),Float.valueOf(el.getAttributeValue("ps")).floatValue(),Float.valueOf(el.getAttributeValue("cr")).floatValue(),Float.valueOf(el.getAttributeValue("di")).floatValue(),Float.valueOf(el.getAttributeValue("hd")).floatValue(),Float.valueOf(el.getAttributeValue("ae")).floatValue(),RecordManager.instance().getRecordsByUnit(unitCode) );
+       iu = new Unit( el.getAttributeValue("uid"),el.getAttributeValue("name"),Float.valueOf(el.getAttributeValue("ps")).floatValue(),Float.valueOf(el.getAttributeValue("cr")).floatValue(),Float.valueOf(el.getAttributeValue("di")).floatValue(),Float.valueOf(el.getAttributeValue("hd")).floatValue(),Float.valueOf(el.getAttributeValue("ae")).floatValue(),RecordManager.getInstance().getRecordsByUnit(unitCode) );
                 UM.put(iu.getUnitCode(), iu);
 return iu;}
         
@@ -66,7 +66,7 @@ IUnit iu;
 
 
 uM = new UnitMap();
-for ( Element el : (List<Element>) XMLManager.getXML().getDocument().getRootElement().getChild("unitTable").getChildren("unit") )
+for ( Element el : (List<Element>) XMLManager.getInstance().getDocument().getRootElement().getChild("unitTable").getChildren("unit") )
 {
     iu = new UnitProxy( el.getAttributeValue("uid"), el.getAttributeValue("name") ); 
     uM.put(iu.getUnitCode(), iu); } // unit maps are filled with PROXY units

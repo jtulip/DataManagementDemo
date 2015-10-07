@@ -23,8 +23,8 @@ public interface IUnit {
 
     public String getGrade(float asg1, float asg2, float exam);
 
-    public void               addStudentRecord(IStudentUnitRecord record );
-    public IStudentUnitRecord getStudentRecord(int studentID );
+    public void               addStudentRecord(IRecord record );
+    public IRecord getStudentRecord(int studentID );
     
     public RecordList listStudentRecords();
 }

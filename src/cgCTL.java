@@ -55,10 +55,10 @@ public void studentSelected( Integer id ) {
    
   else 
 {
-    IStudent s = StudentManager.get().getStudent(id);
+    IStudent s = StudentManager.getInstance().getStudent(id);
     
     
-IStudentUnitRecord r = s.getUnitRecord(cuc);
+IRecord r = s.getUnitRecord(cuc);
     
     
     
@@ -86,14 +86,14 @@ public void enableChangeMarks() {
             
             
         IUnit u = UnitManager.UM().getUnit(cuc);
-        IStudent s = StudentManager.get().getStudent(currentStudentID);
+        IStudent s = StudentManager.getInstance().getStudent(currentStudentID);
         
         
-        IStudentUnitRecord r = s.getUnitRecord(cuc);
+        IRecord r = s.getUnitRecord(cuc);
 r.setAsg1(asg1);
                     r.setAsg2(asg2);
 r.setExam(exam);
-            RecordManager.instance().saveRecord(r);
+            RecordManager.getInstance().saveRecord(r);
 cgUI.setState4(true);
 
 

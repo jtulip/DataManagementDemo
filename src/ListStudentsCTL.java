@@ -2,7 +2,7 @@
 
         public class ListStudentsCTL {
 private StudentManager sm;
-public ListStudentsCTL() {sm = StudentManager.get();}
+public ListStudentsCTL() {sm = StudentManager.getInstance();}
             public void listStudents( IStudentLister lister, String unitCode ) {
     lister.clearStudents();
                 StudentMap students = sm.getStudentsByUnit( unitCode );

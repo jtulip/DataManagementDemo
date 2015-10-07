@@ -15,7 +15,7 @@ private String l;
 
         
         this.Il = Il;
-this.lI = StudentManager.get();}
+this.lI = StudentManager.getInstance();}
 
     public Integer getID() { return I; 
 
@@ -42,9 +42,9 @@ public void setFirstName(String firstName) {
 
     
     
-        public void addUnitRecord(IStudentUnitRecord record) {
+        public void addUnitRecord(IRecord record) {
         lI.getStudent(I).addUnitRecord(record);}
-        public IStudentUnitRecord getUnitRecord(String unitCode) {
+        public IRecord getUnitRecord(String unitCode) {
 
             
  

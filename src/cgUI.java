@@ -302,7 +302,7 @@ public void setState1( boolean b ) {jComboBox1.setEnabled(b);
 public void clearStudents() { rM.removeAllElements(); rM.addElement("<none selected>"); }
 public void addStudent( IStudent student ) { rM.addElement( student.getID().toString() + " : " + student.getFirstName() + " " + student.getLastName() );}
 public void setState2( boolean b ) { jComboBox2.setEnabled(b);}
-public void setRecord( IStudentUnitRecord record ) {
+public void setRecord( IRecord record ) {
 jTextField1.setText(new Float(record.getAsg1()).toString()); jTextField2.setText(new Float(record.getAsg2()).toString()); jTextField3.setText(new Float(record.getExam()).toString()); jLabel5.setText("");
 //setEnableChangeMarks(true);
 }

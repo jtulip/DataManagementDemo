@@ -11,8 +11,8 @@ public interface IStudent {
     public String getLastName();
     public void setLastName(String lastName);
 
-    public void addUnitRecord( IStudentUnitRecord record );
-    public IStudentUnitRecord getUnitRecord( String unitCode );
+    public void addUnitRecord( IRecord record );
+    public IRecord getUnitRecord( String unitCode );
 
     public RecordList getUnitRecords();
 

@@ -1,6 +1,6 @@
 
 
-public interface IStudentUnitRecord {
+public interface IRecord {
 
     public Integer getStudentID();
     public String getUnitCode();

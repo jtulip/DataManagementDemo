@@ -56,9 +56,9 @@ return "CR";
 else 
 return "HD";}
 
-    public void addStudentRecord( IStudentUnitRecord record ) { rs.add(record); }
-public IStudentUnitRecord getStudentRecord( int studentID ) {
-for ( IStudentUnitRecord r : rs ) {
+    public void addStudentRecord( IRecord record ) { rs.add(record); }
+public IRecord getStudentRecord( int studentID ) {
+for ( IRecord r : rs ) {
 if (r.getStudentID() == studentID) 
 return r;
 }

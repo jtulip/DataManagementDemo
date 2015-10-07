@@ -17,7 +17,7 @@ private static XMLManager self = null;
 
 
         private Document doc;
-        public static XMLManager getXML() { if (self == null ) self = new XMLManager(); return self;
+        public static XMLManager getInstance() { if (self == null ) self = new XMLManager(); return self;
 }
     private XMLManager() {init();
 
