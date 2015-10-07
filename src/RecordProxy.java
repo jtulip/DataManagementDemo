@@ -18,24 +18,24 @@ public class RecordProxy implements IRecord {
 		return unitCode;
 	}
 
-	public void setAsg1(float mark) {
-		mngr.getStudentUnitRecord(studentID, unitCode).setAsg1(mark);
+	public void setAsg1Mark(float mark) {
+		mngr.getStudentUnitRecord(studentID, unitCode).setAsg1Mark(mark);
 	}
 
 	public float getAsg1() {
 		return mngr.getStudentUnitRecord(studentID, unitCode).getAsg1();
 	}
 
-	public void setAsg2(float mark) {
-		mngr.getStudentUnitRecord(studentID, unitCode).setAsg2(mark);
+	public void setAsg2Mark(float mark) {
+		mngr.getStudentUnitRecord(studentID, unitCode).setAsg2Mark(mark);
 	}
 
 	public float getAsg2() {
 		return mngr.getStudentUnitRecord(studentID, unitCode).getAsg2();
 	}
 
-	public void setExam(float mark) {
-		mngr.getStudentUnitRecord(studentID, unitCode).setExam(mark);
+	public void setExamMark(float mark) {
+		mngr.getStudentUnitRecord(studentID, unitCode).setExamMark(mark);
 	}
 
 	public float getExam() {

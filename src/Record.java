@@ -26,14 +26,14 @@ this.studentID = id;
 public String getUnitCode() { 
         return unitCode;}
 
-        public void setAsg1(float mark) { 
+        public void setAsg1Mark(float mark) { 
             this.asg1 = mark;}
             public float getAsg1() { 
                 
     return this.asg1; 
 }
 
-public void setAsg2(float mark) { this.asg2 = mark; 
+public void setAsg2Mark(float mark) { this.asg2 = mark; 
 
 
 
@@ -42,7 +42,7 @@ public void setAsg2(float mark) { this.asg2 = mark;
     
     public float getAsg2() { 
         return this.asg2;}
-        public void setExam(float mark) { 
+        public void setExamMark(float mark) { 
         this.exam = mark;}
         public float getExam() { 
 return this.exam; }

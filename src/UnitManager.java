@@ -9,7 +9,7 @@ public class UnitManager {
 private static UnitManager self = null;
     
     private UnitMap UM;
-    public static UnitManager UM() {
+    public static UnitManager getInstance() {
         if (self == null ) self = new UnitManager(); return self;
     }
     
