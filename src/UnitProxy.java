@@ -6,12 +6,12 @@ private String UC;
         private String un;
 
         
-        UnitManager   um;
+        UnitDAO   um;
 
     public UnitProxy( String unitCode, String unitName ) {
         this.UC = unitCode;
             this.un = unitName;
-                um = UnitManager.getInstance(); }
+                um = UnitDAO.getInstance(); }
     public String getUnitCode() { 
         return this.UC;}
         public String getUnitName() { 

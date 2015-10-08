@@ -1,12 +1,12 @@
 
 public class ListStudentsCTL {
 	
-	private StudentManager studentManager_;
+	private StudentDAO studentManager_;
 
 	
 	
 	public ListStudentsCTL() {
-		studentManager_ = StudentManager.getInstance();
+		studentManager_ = StudentDAO.getInstance();
 	}
 
 	

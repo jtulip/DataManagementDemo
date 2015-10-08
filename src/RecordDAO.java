@@ -3,25 +3,25 @@ import java.util.List;
 
 import org.jdom.*;
 
-public class RecordManager {
+public class RecordDAO {
 
-	private static RecordManager recordManager_ = null;
+	private static RecordDAO recordManager_ = null;
 	private RecordMap recordMap_;
 	private java.util.HashMap<String, RecordList> recordsByUnit_;
 	private java.util.HashMap<Integer, RecordList> recordsByStudent_;
 
 	
 	
-	public static RecordManager getInstance() {
+	public static RecordDAO getInstance() {
 		if (recordManager_ == null) {
-			recordManager_ = new RecordManager();
+			recordManager_ = new RecordDAO();
 		}
 		return recordManager_;
 	}
 
 	
 	
-	private RecordManager() {
+	private RecordDAO() {
 		recordMap_ = new RecordMap();
 		recordsByUnit_ = new java.util.HashMap<>();
 		recordsByStudent_ = new java.util.HashMap<>();
@@ -65,7 +65,7 @@ public class RecordManager {
 		throw new RuntimeException("DBMD: createStudent : student unit record not in file");
 	}
 
-	
+
 	
 	public RecordList getRecordsByUnit(String unitCode) {
 		RecordList recordList = recordsByUnit_.get(unitCode);

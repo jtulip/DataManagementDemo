@@ -5,13 +5,13 @@ public class StudentProxy implements IStudent {
 	private String firstName_;
 
 	private String lastName_;
-	private StudentManager studentManager_;
+	private StudentDAO studentManager_;
 
 	public StudentProxy(Integer studentId, String firstName, String lastName) {
 		this.studentId_ = studentId;
 		this.firstName_ = firstName;
 		this.lastName_ = lastName;
-		this.studentManager_ = StudentManager.getInstance();
+		this.studentManager_ = StudentDAO.getInstance();
 	}
 
 	

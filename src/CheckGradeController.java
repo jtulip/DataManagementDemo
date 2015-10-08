@@ -56,7 +56,7 @@ public class CheckGradeController {
 		}
 
 		else {
-			IStudent student = StudentManager.getInstance().getStudent(studentId);
+			IStudent student = StudentDAO.getInstance().getStudent(studentId);
 
 			IRecord record = student.getRecordForUnit(currentUnitCode_);
 
@@ -71,7 +71,7 @@ public class CheckGradeController {
 	
 	
 	public String checkGrade(float asg1Mark, float asg2Mark, float examMark) {
-		IUnit unit = UnitManager.getInstance().getUnit(currentUnitCode_);
+		IUnit unit = UnitDAO.getInstance().getUnit(currentUnitCode_);
 		String grade = unit.getGrade(asg1Mark, asg2Mark, examMark);
 		return grade;
 	}
@@ -86,13 +86,13 @@ public class CheckGradeController {
 	
 	
 	public void saveGrade(float asg1Mark, float asg2Mark, float examMark) {
-		IStudent student = StudentManager.getInstance().getStudent(currentStudentID_);
+		IStudent student = StudentDAO.getInstance().getStudent(currentStudentID_);
 
 		IRecord record = student.getRecordForUnit(currentUnitCode_);
 		record.setAsg1Mark(asg1Mark);
 		record.setAsg2Mark(asg2Mark);
 		record.setExamMark(examMark);
-		RecordManager.getInstance().saveRecord(record);
+		RecordDAO.getInstance().saveRecord(record);
 
 		checkGradeUI_.setChangeButtonEnabled(true);
 		checkGradeUI_.setMarkFieldsEditableSaveButtonEnabled(false);

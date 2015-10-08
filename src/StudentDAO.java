@@ -5,24 +5,24 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
 
-public class StudentManager {
+public class StudentDAO {
 	
-	private static StudentManager self_ = null;
+	private static StudentDAO self_ = null;
 	private StudentMap studentMap_;
 	private Map<String, StudentMap> unitMap_;
 
 	
 	
-	public static StudentManager getInstance() {
+	public static StudentDAO getInstance() {
 		if (self_ == null) {
-			self_ = new StudentManager();
+			self_ = new StudentDAO();
 		}
 		return self_;
 	}
 
 	
 	
-	private StudentManager() {
+	private StudentDAO() {
 		studentMap_ = new StudentMap();
 		unitMap_ = new HashMap<String, StudentMap>();
 	}
@@ -44,7 +44,7 @@ public class StudentManager {
 		Element studentElement = getStudentElement(id);
 		
 		if (studentElement != null) {
-			RecordList records = RecordManager.getInstance().getRecordsByStudent(id);
+			RecordList records = RecordDAO.getInstance().getRecordsByStudent(id);
 			String firstName = studentElement.getAttributeValue("fname");
 			String lastName = studentElement.getAttributeValue("lname");
 			
@@ -80,7 +80,7 @@ public class StudentManager {
 		
 		studentMap = new StudentMap();
 		IStudent student;
-		RecordList unitRecords = RecordManager.getInstance().getRecordsByUnit(unitCode);
+		RecordList unitRecords = RecordDAO.getInstance().getRecordsByUnit(unitCode);
 		
 		for (IRecord S : unitRecords) {
 			student = createStudentProxy(new Integer(S.getStudentId()));

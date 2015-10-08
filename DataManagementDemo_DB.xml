@@ -14,7 +14,7 @@
   </studentTable>
   <studentUnitRecordTable>
     <record sid="1" uid="ITC515" asg1="51" asg2="51" exam="0" />
-    <record sid="3" uid="ITC515" asg1="14.0" asg2="12.0" exam="25.0" />
+    <record sid="3" uid="ITC515" asg1="15.0" asg2="12.0" exam="25.0" />
     <record sid="4" uid="ITC515" asg1="10" asg2="10" exam="24" />
     <record sid="1" uid="ITC508" asg1="0.0" asg2="0.0" exam="25.0" />
     <record sid="2" uid="ITC508" asg1="0.0" asg2="0.0" exam="44.0" />

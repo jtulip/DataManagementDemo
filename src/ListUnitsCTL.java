@@ -1,12 +1,12 @@
 
 public class ListUnitsCTL {
 	
-	private UnitManager unitManager_;
+	private UnitDAO unitManager_;
 
 	
 	
 	public ListUnitsCTL() {
-		unitManager_ = UnitManager.getInstance();
+		unitManager_ = UnitDAO.getInstance();
 	}
 
 	

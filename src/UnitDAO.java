@@ -2,23 +2,23 @@
 import java.util.List;
 import org.jdom.*;
 
-public class UnitManager {
+public class UnitDAO {
 
-	private static UnitManager self_ = null;
+	private static UnitDAO self_ = null;
 	private UnitMap unitMap_;
 
 	
 	
-	public static UnitManager getInstance() {
+	public static UnitDAO getInstance() {
 		if (self_ == null) {
-			self_ = new UnitManager();
+			self_ = new UnitDAO();
 		}
 		return self_;
 	}
 
 	
 	
-	private UnitManager() {
+	private UnitDAO() {
 		unitMap_ = new UnitMap();
 	}
 
@@ -50,7 +50,7 @@ public class UnitManager {
 				float diCutoff = Float.valueOf(element.getAttributeValue("di")).floatValue();
 				float hdCutoff = Float.valueOf(element.getAttributeValue("hd")).floatValue();
 				float aeCutoff = Float.valueOf(element.getAttributeValue("ae")).floatValue();
-				RecordList records = RecordManager.getInstance().getRecordsByUnit(unitCode);
+				RecordList records = RecordDAO.getInstance().getRecordsByUnit(unitCode);
 				
 				unit = new Unit(unitCode, unitName, psCutoff, crCutoff, diCutoff, hdCutoff, aeCutoff, records);
 				unitMap_.put(unit.getUnitCode(), unit);

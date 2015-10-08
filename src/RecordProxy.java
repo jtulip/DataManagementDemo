@@ -3,14 +3,14 @@ public class RecordProxy implements IRecord {
 	
 	private Integer studentId_;
 	private String unitCode_;
-	private RecordManager recordManager_;
+	private RecordDAO recordManager_;
 
 	
 	
 	public RecordProxy(Integer id, String code) {
 		this.studentId_ = id;
 		this.unitCode_ = code;
-		this.recordManager_ = RecordManager.getInstance();
+		this.recordManager_ = RecordDAO.getInstance();
 	}
 
 	
