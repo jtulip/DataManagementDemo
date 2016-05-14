@@ -1,3 +1,4 @@
+package datamanagement.entities;
 
 public interface IRecord {
 

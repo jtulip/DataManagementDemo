@@ -1,5 +1,5 @@
-
-
+package datamanagement.entities;
+import datamanagement.daos.xml.UnitDAO;
 
 public class UnitProxy implements IUnit {
 private String UC;

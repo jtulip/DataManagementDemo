@@ -1,6 +1,13 @@
+package datamanagement.daos.xml;
 
 import java.util.List;
 import org.jdom.*;
+
+import datamanagement.entities.IUnit;
+import datamanagement.entities.RecordList;
+import datamanagement.entities.Unit;
+import datamanagement.entities.UnitMap;
+import datamanagement.entities.UnitProxy;
 
 public class UnitDAO {
 
@@ -83,7 +90,7 @@ public class UnitDAO {
 	
 	
 	private List<Element> getElementList(String tableId, String attributeId) {
-		Document doc = XMLManager.getInstance().getDocument();
+		Document doc = DataManager.getInstance().getDocument();
 		Element recordTableElement = doc.getRootElement().getChild(tableId);
 		@SuppressWarnings("unchecked")
 		List<Element> elementList = (List<Element>) recordTableElement.getChildren(attributeId);

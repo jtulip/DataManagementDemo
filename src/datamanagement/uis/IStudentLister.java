@@ -1,3 +1,5 @@
+package datamanagement.uis;
+import datamanagement.entities.IStudent;
 
 /**
  * @author jtulip

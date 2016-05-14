@@ -1,5 +1,13 @@
+package datamanagement.daos.xml;
 
 import org.jdom.*;
+
+import datamanagement.entities.IRecord;
+import datamanagement.entities.IStudent;
+import datamanagement.entities.RecordList;
+import datamanagement.entities.Student;
+import datamanagement.entities.StudentMap;
+import datamanagement.entities.StudentProxy;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -94,7 +102,7 @@ public class StudentDAO {
 	
 	
 	private Element getStudentElement(Integer id) {
-		Document doc = XMLManager.getInstance().getDocument();
+		Document doc = DataManager.getInstance().getDocument();
 		Element studentTableElement = doc.getRootElement().getChild("studentTable");		
 		@SuppressWarnings("unchecked")
 		List<Element> studentElements = (List<Element>) studentTableElement.getChildren("student");

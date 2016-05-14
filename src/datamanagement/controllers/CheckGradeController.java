@@ -1,3 +1,14 @@
+package datamanagement.controllers;
+
+import datamanagement.daos.derby.DataManager;
+import datamanagement.daos.derby.RecordDAO;
+import datamanagement.daos.derby.StudentDAO;
+import datamanagement.daos.derby.UnitDAO;
+
+import datamanagement.entities.IRecord;
+import datamanagement.entities.IStudent;
+import datamanagement.entities.IUnit;
+import datamanagement.uis.CheckGradeUserInterface;
 
 public class CheckGradeController {
 
@@ -96,6 +107,10 @@ public class CheckGradeController {
 
 		checkGradeUI_.setChangeButtonEnabled(true);
 		checkGradeUI_.setMarkFieldsEditableSaveButtonEnabled(false);
+	}
+	
+	public void close() {
+		DataManager.getInstance().close();
 	}
 	
 }

@@ -1,3 +1,5 @@
+package datamanagement.entities;
+import datamanagement.daos.xml.StudentDAO;
 
 public class StudentProxy implements IStudent {
 	

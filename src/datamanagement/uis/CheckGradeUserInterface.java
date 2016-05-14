@@ -1,3 +1,10 @@
+package datamanagement.uis;
+import datamanagement.entities.IRecord;
+import datamanagement.entities.IStudent;
+import datamanagement.entities.IUnit;
+import datamanagement.controllers.CheckGradeController;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class CheckGradeUserInterface extends javax.swing.JFrame implements IUnitLister, IStudentLister {
 	
@@ -10,6 +17,13 @@ public class CheckGradeUserInterface extends javax.swing.JFrame implements IUnit
 	Integer studentId_;
 
 	public CheckGradeUserInterface(CheckGradeController controller) {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				System.out.println("Window closing");
+				controller_.close();
+			}
+		});
 		this.controller_ = controller;
 		unitModel_ = new javax.swing.DefaultComboBoxModel<>(new String[0]);
 		studentModel_ = new javax.swing.DefaultComboBoxModel<>(new String[0]);

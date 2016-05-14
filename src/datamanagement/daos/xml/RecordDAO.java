@@ -1,7 +1,14 @@
+package datamanagement.daos.xml;
 
 import java.util.List;
 
 import org.jdom.*;
+
+import datamanagement.entities.IRecord;
+import datamanagement.entities.Record;
+import datamanagement.entities.RecordList;
+import datamanagement.entities.RecordMap;
+import datamanagement.entities.RecordProxy;
 
 public class RecordDAO {
 
@@ -139,7 +146,7 @@ public class RecordDAO {
 				element.setAttribute("exam", examValue.toString());
 
 				// write out the XML file for continuous save
-				XMLManager.getInstance().saveDocument(); 
+				DataManager.getInstance().saveDocument(); 
 				return;
 			}
 		}
@@ -150,7 +157,7 @@ public class RecordDAO {
 	
 	
 	private List<Element> getElementList(String tableId, String attributeId) {
-		Document doc = XMLManager.getInstance().getDocument();
+		Document doc = DataManager.getInstance().getDocument();
 		Element recordTableElement = doc.getRootElement().getChild(tableId);
 		@SuppressWarnings("unchecked")
 		List<Element> elementList = (List<Element>) recordTableElement.getChildren(attributeId);

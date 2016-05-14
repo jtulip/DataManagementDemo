@@ -1,3 +1,5 @@
+package datamanagement;
+import datamanagement.controllers.CheckGradeController;
 
 public class Main {
 	

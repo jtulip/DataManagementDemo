@@ -1,3 +1,4 @@
+package datamanagement.entities;
 
 public class Student implements IStudent {
 	private Integer id;

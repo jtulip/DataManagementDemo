@@ -1,3 +1,5 @@
+package datamanagement.entities;
+import datamanagement.daos.xml.RecordDAO;
 
 public class RecordProxy implements IRecord {
 	

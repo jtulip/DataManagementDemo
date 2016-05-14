@@ -1,3 +1,4 @@
+package datamanagement.daos.xml;
 
 import org.jdom.Document;
 import org.jdom.input.SAXBuilder;
@@ -7,28 +8,30 @@ import java.io.FileWriter;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
+import datamanagement.AppProperties;
+
 import java.io.IOException;
 import java.util.Properties;
 
 import org.jdom.JDOMException;
 
-public class XMLManager {
+public class DataManager {
 	
-	private static XMLManager self_ = null;
+	private static DataManager self_ = null;
 	private Document xmlDocument_;
 
 	
 	
-	public static XMLManager getInstance() {
+	public static DataManager getInstance() {
 		if (self_ == null) {
-			self_ = new XMLManager();
+			self_ = new DataManager();
 		}
 		return self_;
 	}
 
 	
 	
-	private XMLManager() {
+	private DataManager() {
 		init();
 	}
 
@@ -74,6 +77,12 @@ public class XMLManager {
 			System.err.printf("%s\n", "DBMD : XMLManager : saveDocument : Error saving XML to " + xmlFile);
 			throw new RuntimeException("DBMD: XMLManager : saveDocument : error writing to file");
 		}
+	}
+	
+	
+	
+	public void close() {
+		System.out.println("DataManager closing");
 	}
 	
 }
