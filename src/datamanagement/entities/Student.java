@@ -40,7 +40,7 @@ public class Student implements IStudent {
 
 	public IRecord getRecordForUnit(String unitCode) {
 		for (IRecord r : su)
-			if (r.getUnitCode().equals(unitCode))
+			if (r.getSubjectCode().equals(unitCode))
 				return r;
 
 		return null;

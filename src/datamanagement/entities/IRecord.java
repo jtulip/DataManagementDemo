@@ -4,7 +4,7 @@ public interface IRecord {
 
 	public Integer getStudentId();
 
-	public String getUnitCode();
+	public String getSubjectCode();
 
 	public void setAsg1Mark(float mark);
 

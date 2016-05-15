@@ -1,5 +1,5 @@
 package datamanagement.entities;
-import datamanagement.daos.xml.StudentDAO;
+import datamanagement.daos.IStudentDAO;
 
 public class StudentProxy implements IStudent {
 	
@@ -7,13 +7,13 @@ public class StudentProxy implements IStudent {
 	private String firstName_;
 
 	private String lastName_;
-	private StudentDAO studentManager_;
+	private IStudentDAO studentManager_;
 
-	public StudentProxy(Integer studentId, String firstName, String lastName) {
+	public StudentProxy(Integer studentId, String firstName, String lastName, IStudentDAO dao) {
 		this.studentId_ = studentId;
 		this.firstName_ = firstName;
 		this.lastName_ = lastName;
-		this.studentManager_ = StudentDAO.getInstance();
+		this.studentManager_ = dao;
 	}
 
 	

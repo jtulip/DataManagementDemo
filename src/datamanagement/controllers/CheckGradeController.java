@@ -1,13 +1,11 @@
 package datamanagement.controllers;
 
+import datamanagement.daos.*;
 import datamanagement.daos.derby.DataManager;
-import datamanagement.daos.derby.RecordDAO;
-import datamanagement.daos.derby.StudentDAO;
-import datamanagement.daos.derby.UnitDAO;
 
 import datamanagement.entities.IRecord;
 import datamanagement.entities.IStudent;
-import datamanagement.entities.IUnit;
+import datamanagement.entities.ISubject;
 import datamanagement.uis.CheckGradeUserInterface;
 
 public class CheckGradeController {
@@ -15,6 +13,9 @@ public class CheckGradeController {
 	CheckGradeUserInterface checkGradeUI_;
 	String currentUnitCode_ = null;
 	Integer currentStudentID_ = null;
+	ISubjectDAO subjectDAO_ = null;
+	IStudentDAO studentDAO_ = null;
+	IRecordDAO recordDAO_ = null;
 
 	
 	
@@ -23,6 +24,12 @@ public class CheckGradeController {
 	
 
 	public void execute() {
+		DataManager dm = DataManager.getInstance();
+		dm.init();
+		subjectDAO_ = dm.getSubjectDAO();
+		studentDAO_ = dm.getStudentDAO();
+		recordDAO_  = dm.getRecordDAO();
+		
 		checkGradeUI_ = new CheckGradeUserInterface(this);
 		checkGradeUI_.setUnitComboBoxEnabled(false);
 
@@ -32,7 +39,7 @@ public class CheckGradeController {
 		checkGradeUI_.setMarkFieldsEditableSaveButtonEnabled(false);
 		checkGradeUI_.resetAllFields();
 
-		ListUnitsCTL luCTL = new ListUnitsCTL();
+		ListSubjectsCTL luCTL = new ListSubjectsCTL(subjectDAO_);
 		luCTL.listUnits(checkGradeUI_);
 		checkGradeUI_.setVisible(true);
 		checkGradeUI_.setUnitComboBoxEnabled(true);
@@ -46,7 +53,7 @@ public class CheckGradeController {
 			checkGradeUI_.setStudentComboBoxEnabled(false);
 		}
 		else {
-			ListStudentsCTL lsCTL = new ListStudentsCTL();
+			ListStudentsCTL lsCTL = new ListStudentsCTL(studentDAO_);
 			lsCTL.listStudents(checkGradeUI_, unitCode);
 			currentUnitCode_ = unitCode;
 			checkGradeUI_.setStudentComboBoxEnabled(true);
@@ -67,7 +74,7 @@ public class CheckGradeController {
 		}
 
 		else {
-			IStudent student = StudentDAO.getInstance().getStudent(studentId);
+			IStudent student = studentDAO_.getStudent(studentId);
 
 			IRecord record = student.getRecordForUnit(currentUnitCode_);
 
@@ -82,7 +89,7 @@ public class CheckGradeController {
 	
 	
 	public String checkGrade(float asg1Mark, float asg2Mark, float examMark) {
-		IUnit unit = UnitDAO.getInstance().getUnit(currentUnitCode_);
+		ISubject unit = subjectDAO_.getSubject(currentUnitCode_);
 		String grade = unit.getGrade(asg1Mark, asg2Mark, examMark);
 		return grade;
 	}
@@ -97,17 +104,19 @@ public class CheckGradeController {
 	
 	
 	public void saveGrade(float asg1Mark, float asg2Mark, float examMark) {
-		IStudent student = StudentDAO.getInstance().getStudent(currentStudentID_);
+		IStudent student = studentDAO_.getStudent(currentStudentID_);
 
 		IRecord record = student.getRecordForUnit(currentUnitCode_);
 		record.setAsg1Mark(asg1Mark);
 		record.setAsg2Mark(asg2Mark);
 		record.setExamMark(examMark);
-		RecordDAO.getInstance().saveRecord(record);
+		recordDAO_.saveRecord(record);
 
 		checkGradeUI_.setChangeButtonEnabled(true);
 		checkGradeUI_.setMarkFieldsEditableSaveButtonEnabled(false);
 	}
+
+	
 	
 	public void close() {
 		DataManager.getInstance().close();

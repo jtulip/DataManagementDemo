@@ -4,13 +4,14 @@ import java.util.List;
 
 import org.jdom.*;
 
+import datamanagement.daos.IRecordDAO;
 import datamanagement.entities.IRecord;
 import datamanagement.entities.Record;
 import datamanagement.entities.RecordList;
 import datamanagement.entities.RecordMap;
 import datamanagement.entities.RecordProxy;
 
-public class RecordDAO {
+public class RecordDAO implements IRecordDAO {
 
 	private static RecordDAO recordManager_ = null;
 	private RecordMap recordMap_;
@@ -36,19 +37,19 @@ public class RecordDAO {
 
 	
 	
-	public IRecord getStudentUnitRecord(Integer studentID, String unitCode) {
+	public IRecord getRecord(Integer studentID, String unitCode) {
 		String recordKey = studentID.toString() + unitCode;
 		IRecord record = recordMap_.get(recordKey);
 		
 		if (record == null) {
-			record = createStudentUnitRecord(studentID, unitCode);
+			record = createRecord(studentID, unitCode);
 		}
 		return record;
 	}
 
 	
 	
-	private IRecord createStudentUnitRecord(Integer studentId, String unitCode) {
+	private IRecord createRecord(Integer studentId, String unitCode) {
 		
 		List<Element> elementList = getElementList("studentUnitRecordTable", "record");
 
@@ -64,17 +65,17 @@ public class RecordDAO {
 				
 				IRecord record = new Record(studentId, unitCode, asg1Mark, asg2Mark, examMark);
 				
-				String recordKey = record.getStudentId().toString() + record.getUnitCode();
+				String recordKey = record.getStudentId().toString() + record.getSubjectCode();
 				recordMap_.put(recordKey, record);
 				return record;
 			}
 		}
-		throw new RuntimeException("DBMD: createStudent : student unit record not in file");
+		throw new RuntimeException("DBMD: createRecord : record not in file");
 	}
 
 
 	
-	public RecordList getRecordsByUnit(String unitCode) {
+	public RecordList getRecordsBySubject(String unitCode) {
 		RecordList recordList = recordsByUnit_.get(unitCode);
 		if (recordList != null) {
 			return recordList;
@@ -86,7 +87,7 @@ public class RecordDAO {
 		for (Element element : elementList) {
 			if (unitCode.equals(element.getAttributeValue("uid"))) {
 				Integer studentId = new Integer(element.getAttributeValue("sid"));
-				RecordProxy recordProxy = new RecordProxy(studentId,unitCode);
+				RecordProxy recordProxy = new RecordProxy(studentId, unitCode, this);
 				recordList.add(recordProxy);
 			}
 		}
@@ -112,8 +113,8 @@ public class RecordDAO {
 		for (Element element : elementList) {
 			if (studentID.toString().equals(element.getAttributeValue("sid"))) {
 				Integer studentId = new Integer(element.getAttributeValue("sid"));
-				String unitCode = element.getAttributeValue("uid");
-				RecordProxy recordProxy = new RecordProxy(studentId, unitCode);
+				String subjectCode = element.getAttributeValue("uid");
+				RecordProxy recordProxy = new RecordProxy(studentId, subjectCode, this);
 				recordList.add(recordProxy);
 			}
 		}
@@ -131,7 +132,7 @@ public class RecordDAO {
 		
 		for (Element element : elementList) {
 			Integer studentId = Integer.valueOf(record.getStudentId());
-			String unitCode = record.getUnitCode();
+			String unitCode = record.getSubjectCode();
 			
 			boolean recordMatches = studentId.toString().equals(element.getAttributeValue("sid")) && 
 									unitCode.equals(element.getAttributeValue("uid"));
@@ -151,7 +152,7 @@ public class RecordDAO {
 			}
 		}
 
-		throw new RuntimeException("DBMD: saveRecord : no such student record in data");
+		throw new RuntimeException("DBMD: saveRecord : no such record in data");
 	}	
 
 	

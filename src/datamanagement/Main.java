@@ -7,7 +7,12 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
-		new CheckGradeController().execute();
+		try {
+			new CheckGradeController().execute();
+		}
+		catch (RuntimeException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }

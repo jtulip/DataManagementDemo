@@ -1,27 +1,25 @@
 package datamanagement.daos.derby;
 
-import org.apache.derby.jdbc.*;
+//import org.apache.derby.jdbc.*;
 
-import java.io.IOException;
 import java.util.Properties;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-//import java.sql.PreparedStatement;
-//import java.sql.ResultSet;
-//import java.sql.Statement;
 
 import datamanagement.AppProperties;
-import datamanagement.entities.RecordList;
-import datamanagement.entities.RecordMap;
+import datamanagement.daos.*;
 
 
-public class DataManager {
+public class DataManager implements IDataManager {
 
 	private static DataManager derbyManager_ = null;
-	private static Connection connection_ = null;
+	private static Connection  connection_   = null;
 
+	private static IStudentDAO studentDAO_ = null;
+	private static ISubjectDAO subjectDAO_ = null;
+	private static IRecordDAO  recordDAO_  = null;
 	
 	
 	public static DataManager getInstance() {
@@ -33,9 +31,7 @@ public class DataManager {
 
 	
 	
-	private DataManager() {
-		init();
-	}
+	private DataManager() {}
 
 
 	public void init() {
@@ -44,23 +40,51 @@ public class DataManager {
 		
 		try {
 			Properties props = new Properties();
+	        //props.put("user", "user1");
+	        //props.put("password", "user1");
 			String conn_str = "jdbc:derby:DM_Demo;";
 			connection_ = DriverManager.getConnection(conn_str, props);
 			System.out.println("Connected to " + dbName );
+			
+			studentDAO_ = StudentDAO.getInstance();
+			subjectDAO_ = SubjectDAO.getInstance();
+			recordDAO_  = RecordDAO.getInstance();			
+
 		}
-		catch (Exception e) {
-			System.err.printf("%s", "DBMD: DataManager : init : caught Exception\n");
-			e.printStackTrace();
-			throw new RuntimeException("DBMD: DataManager : init : caught Exception");
-		} 
+        catch (SQLException sqle) {
+        	printSQLException(sqle);
+			throw new RuntimeException("DBMD: DataManager : init : caught SQLException");
+        }
 	}
+	
+	
 	
 	public Connection getConnection() {
 		return connection_;
 	}
+
+	
+	@Override
+	public IStudentDAO getStudentDAO() {
+		return studentDAO_;
+	}
+
+
+
+	@Override
+	public ISubjectDAO getSubjectDAO() {
+		return subjectDAO_;
+	}
+
+
+
+	@Override
+	public IRecordDAO getRecordDAO() {
+		return recordDAO_;
+	}
 	
 	public void close() {
-		System.out.println("DataManager closing");
+		System.out.println("Derby DataManager closing");
         try {
             // the shutdown=true attribute shuts down Derby
             DriverManager.getConnection("jdbc:derby:;shutdown=true");
@@ -72,15 +96,7 @@ public class DataManager {
             } 
             else {
                 System.err.println("Derby did not shut down normally");
-                while (se != null) {
-	                System.err.println("\n----- SQLException -----");
-	                System.err.println("  SQL State:  " + se.getSQLState());
-	                System.err.println("  Error Code: " + se.getErrorCode());
-	                System.err.println("  Message:    " + se.getMessage());
-	                // for stack traces, refer to derby.log or uncomment this:
-	                //e.printStackTrace(System.err);
-	                se = se.getNextException();
-                }
+        		printSQLException(se);
             }
         }
         finally {
@@ -90,18 +106,23 @@ public class DataManager {
         		}
         	}
         	catch (SQLException se) {
-                while (se != null) {
-	                System.err.println("\n----- SQLException -----");
-	                System.err.println("  SQL State:  " + se.getSQLState());
-	                System.err.println("  Error Code: " + se.getErrorCode());
-	                System.err.println("  Message:    " + se.getMessage());
-	                // for stack traces, refer to derby.log or uncomment this:
-	                //e.printStackTrace(System.err);
-	                se = se.getNextException();
-                }
+        		printSQLException(se);
         	}
         }
 	}
 
-
+	
+	
+	public void printSQLException (SQLException sqle) {
+        while (sqle != null) {
+            System.err.println("\n----- SQLException -----");
+            System.err.println("  SQL State:  " + sqle.getSQLState());
+            System.err.println("  Error Code: " + sqle.getErrorCode());
+            System.err.println("  Message:    " + sqle.getMessage());
+            // for stack traces, refer to derby.log or uncomment this:
+            //e.printStackTrace(System.err);
+            sqle = sqle.getNextException();
+        }
+		
+	}
 }

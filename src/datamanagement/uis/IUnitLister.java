@@ -1,10 +1,10 @@
 package datamanagement.uis;
-import datamanagement.entities.IUnit;
+import datamanagement.entities.ISubject;
 
 public interface IUnitLister {
 
 	public void clearUnits();
 
-	public void addUnit(IUnit unit);
+	public void addUnit(ISubject unit);
 
 }

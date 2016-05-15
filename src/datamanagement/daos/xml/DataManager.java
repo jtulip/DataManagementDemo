@@ -2,24 +2,28 @@ package datamanagement.daos.xml;
 
 import org.jdom.Document;
 import org.jdom.input.SAXBuilder;
-
-import java.io.FileWriter;
-
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
+import org.jdom.JDOMException;
 
-import datamanagement.AppProperties;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Properties;
 
-import org.jdom.JDOMException;
+import datamanagement.AppProperties;
+import datamanagement.daos.*;
 
-public class DataManager {
+
+public class DataManager implements IDataManager {
 	
 	private static DataManager self_ = null;
 	private Document xmlDocument_;
 
+	private static IStudentDAO studentDAO_ = null;
+	private static ISubjectDAO subjectDAO_ = null;
+	private static IRecordDAO  recordDAO_  = null;
+	
 	
 	
 	public static DataManager getInstance() {
@@ -45,6 +49,10 @@ public class DataManager {
 			SAXBuilder builder = new SAXBuilder();
 			builder.setExpandEntities(true);
 			xmlDocument_ = builder.build(xmlFile);
+			
+			studentDAO_ = StudentDAO.getInstance();
+			subjectDAO_ = SubjectDAO.getInstance();
+			recordDAO_  = RecordDAO.getInstance();
 		}
 		catch (JDOMException e) {
 			System.err.printf("%s", "DBMD: XMLManager : init : caught JDOMException\n");
@@ -82,7 +90,28 @@ public class DataManager {
 	
 	
 	public void close() {
-		System.out.println("DataManager closing");
+		System.out.println("XML DataManager closing");
+	}
+
+
+
+	@Override
+	public IStudentDAO getStudentDAO() {
+		return studentDAO_;
+	}
+
+
+
+	@Override
+	public ISubjectDAO getSubjectDAO() {
+		return subjectDAO_;
+	}
+
+
+
+	@Override
+	public IRecordDAO getRecordDAO() {
+		return recordDAO_;
 	}
 	
 }

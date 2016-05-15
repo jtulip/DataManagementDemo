@@ -2,6 +2,7 @@ package datamanagement.daos.xml;
 
 import org.jdom.*;
 
+import datamanagement.daos.IStudentDAO;
 import datamanagement.entities.IRecord;
 import datamanagement.entities.IStudent;
 import datamanagement.entities.RecordList;
@@ -13,11 +14,11 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
 
-public class StudentDAO {
+public class StudentDAO implements IStudentDAO {
 	
 	private static StudentDAO self_ = null;
 	private StudentMap studentMap_;
-	private Map<String, StudentMap> unitMap_;
+	private Map<String, StudentMap> subjectMap_;
 
 	
 	
@@ -32,7 +33,7 @@ public class StudentDAO {
 	
 	private StudentDAO() {
 		studentMap_ = new StudentMap();
-		unitMap_ = new HashMap<String, StudentMap>();
+		subjectMap_ = new HashMap<String, StudentMap>();
 	}
 
 	
@@ -72,15 +73,15 @@ public class StudentDAO {
 		if (studentElement != null) {
 			String firstName = studentElement.getAttributeValue("fname");
 			String lastName = studentElement.getAttributeValue("lname");
-			return new StudentProxy(id, firstName, lastName);
+			return new StudentProxy(id, firstName, lastName, this);
 		}
 		throw new RuntimeException("DBMD: createStudent : student not in file");
 	}
 
 	
 	
-	public StudentMap getStudentsByUnit(String unitCode) {
-		StudentMap studentMap = unitMap_.get(unitCode);
+	public StudentMap getStudentsBySubject(String unitCode) {
+		StudentMap studentMap = subjectMap_.get(unitCode);
 		
 		if (studentMap != null) {
 			return studentMap;
@@ -88,7 +89,7 @@ public class StudentDAO {
 		
 		studentMap = new StudentMap();
 		IStudent student;
-		RecordList unitRecords = RecordDAO.getInstance().getRecordsByUnit(unitCode);
+		RecordList unitRecords = RecordDAO.getInstance().getRecordsBySubject(unitCode);
 		
 		for (IRecord S : unitRecords) {
 			student = createStudentProxy(new Integer(S.getStudentId()));
@@ -96,7 +97,7 @@ public class StudentDAO {
 			studentMap.put(studentId, student);
 		}
 		
-		unitMap_.put(unitCode, studentMap);
+		subjectMap_.put(unitCode, studentMap);
 		return studentMap;
 	}
 	

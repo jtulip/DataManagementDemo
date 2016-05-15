@@ -25,9 +25,9 @@ CREATE TABLE Records
 	(
 		SubjectCode character(6) NOT NULL,
 		StudentId integer NOT NULL,
-		Asg1Mark integer,
-		Asg2Mark integer,
-		ExamMark integer
+		Asg1Mark float,
+		Asg2Mark float,
+		ExamMark float
 	);
 
 ALTER TABLE Records

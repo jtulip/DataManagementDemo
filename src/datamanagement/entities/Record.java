@@ -27,7 +27,7 @@ public class Record implements IRecord {
 
 	
 	
-	public String getUnitCode() {
+	public String getSubjectCode() {
 		return unitCode_;
 	}
 

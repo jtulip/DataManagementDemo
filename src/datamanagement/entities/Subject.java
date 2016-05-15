@@ -1,20 +1,20 @@
 package datamanagement.entities;
 
-public class Unit implements IUnit {
+public class Subject implements ISubject {
 	
 	private String unitCode_;
 	private String unitName_;
-	private float psCutoff_;
-	private float crCutoff_;
-	private float diCutoff_;
-	private float hdCutoff_;
-	private float aeCutoff_;
+	private int psCutoff_;
+	private int crCutoff_;
+	private int diCutoff_;
+	private int hdCutoff_;
+	private int aeCutoff_;
 	private RecordList records_;
 
 	
 	
-	public Unit(String unitCode, String unitName, 
-			    float psCutoff, float crCutoff, float diCutoff, float hdCutoff, float aeCutoff, RecordList rl) {
+	public Subject(String unitCode, String unitName, 
+			int psCutoff, int crCutoff, int diCutoff, int hdCutoff, int aeCutoff, RecordList rl) {
 		
 		unitCode_ = unitCode;
 		unitName_ = unitName;
@@ -28,75 +28,75 @@ public class Unit implements IUnit {
 
 	
 	
-	public String getUnitCode() {
+	public String getSubjectCode() {
 		return this.unitCode_;
 	}
 
 	
 	
-	public String getUnitName() {
+	public String getSubjectName() {
 
 		return this.unitName_;
 	}
 
 	
 	
-	public void setPsCutoff1(float cutoff) {
+	public void setPsCutoff1(int cutoff) {
 		this.psCutoff_ = cutoff;
 	}
 
 	
 	
-	public float getPsCutoff() {
+	public int getPsCutoff() {
 		return this.psCutoff_;
 	}
 
 	
 	
-	public void setCrCutoff(float cutoff) {
+	public void setCrCutoff(int cutoff) {
 		this.crCutoff_ = cutoff;
 	}
 
 	
 	
-	public float getCrCutoff() {
+	public int getCrCutoff() {
 		return this.crCutoff_;
 	}
 
 	
 	
-	public void setDiCutoff(float cutoff) {
+	public void setDiCutoff(int cutoff) {
 		this.diCutoff_ = cutoff;
 	}
 
 	
 	
-	public float getDiCutoff() {
+	public int getDiCutoff() {
 		return this.diCutoff_;
 	}
 
 	
 	
-	public void setHdCutoff(float cutoff) {
+	public void setHdCutoff(int cutoff) {
 		this.hdCutoff_ = cutoff;
 	}
 
 	
 	
-	public float getHdCutoff() {
+	public int getHdCutoff() {
 		return this.hdCutoff_;
 
 	}
 
 	
 	
-	public void setAeCutoff(float cutoff) {
+	public void setAeCutoff(int cutoff) {
 		this.aeCutoff_ = cutoff;
 	}
 
 	
 	
-	public float getAeCutoff() {
+	public int getAeCutoff() {
 		return this.aeCutoff_;
 	}
 

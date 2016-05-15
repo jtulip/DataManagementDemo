@@ -1,8 +1,10 @@
 package datamanagement.uis;
+
 import datamanagement.entities.IRecord;
 import datamanagement.entities.IStudent;
-import datamanagement.entities.IUnit;
+import datamanagement.entities.ISubject;
 import datamanagement.controllers.CheckGradeController;
+
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -20,7 +22,6 @@ public class CheckGradeUserInterface extends javax.swing.JFrame implements IUnit
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
-				System.out.println("Window closing");
 				controller_.close();
 			}
 		});
@@ -325,8 +326,8 @@ public class CheckGradeUserInterface extends javax.swing.JFrame implements IUnit
 
 	
 	
-	public void addUnit(IUnit u) {
-		unitModel_.addElement(u.getUnitCode());
+	public void addUnit(ISubject u) {
+		unitModel_.addElement(u.getSubjectCode());
 	}
 
 	
